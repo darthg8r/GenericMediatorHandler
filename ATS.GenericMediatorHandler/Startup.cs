@@ -29,8 +29,8 @@ namespace ATS.GenericMediatorHandler
 		{
 			services.AddControllers();
 
+			services.AddTransient<IRequestHandler<ExchangeOrderRequest<ExchangeOrderResponseSuccessEvent>, Unit>, ExchangeOrderRequestHandler<ExchangeOrderResponseSuccessEvent, ExchangeOrderRequest<ExchangeOrderResponseSuccessEvent>>>();
 			services.AddMediatR(typeof(Startup));
-			services.AddTransient<IRequestHandler<ExchangeOrderRequest<ExchangeOrderResponseSuccessEvent>>, ExchangeOrderRequestHandler<ExchangeOrderResponseSuccessEvent, ExchangeOrderRequest<ExchangeOrderResponseSuccessEvent>>>();
 
 		}
 

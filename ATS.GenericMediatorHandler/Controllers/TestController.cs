@@ -14,10 +14,10 @@ namespace ATS.GenericMediatorHandler.Controllers
 	public class TestController : ControllerBase
 	{
 		private readonly IMediator _mediator;
-		private readonly IRequestHandler<ExchangeOrderRequest<ExchangeOrderResponseSuccessEvent>> _handler;
+		private readonly IRequestHandler<ExchangeOrderRequest<ExchangeOrderResponseSuccessEvent>, Unit> _handler;
 		private readonly ILogger<TestController> _logger;
 
-		public TestController(IMediator mediator, IRequestHandler<ExchangeOrderRequest<ExchangeOrderResponseSuccessEvent>> handler, ILogger<TestController> logger)
+		public TestController(IMediator mediator, IRequestHandler<ExchangeOrderRequest<ExchangeOrderResponseSuccessEvent>, Unit> handler, ILogger<TestController> logger)
 		{
 			_mediator = mediator;
 			_logger = logger;

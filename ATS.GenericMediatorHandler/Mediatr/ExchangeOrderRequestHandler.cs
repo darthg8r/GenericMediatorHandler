@@ -7,7 +7,7 @@ using Microsoft.Extensions.Logging;
 
 namespace ATS.GenericMediatorHandler.Mediatr
 {
-	public class ExchangeOrderRequestHandler<TEvent, TRequest> : IRequestHandler<TRequest>
+	public class ExchangeOrderRequestHandler<TEvent, TRequest> : IRequestHandler<TRequest, Unit>
 		where TRequest : ExchangeOrderRequest<TEvent>
 		where TEvent : ExchangeOrderEvent
 	{
