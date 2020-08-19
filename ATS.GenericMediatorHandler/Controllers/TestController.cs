@@ -14,18 +14,22 @@ namespace ATS.GenericMediatorHandler.Controllers
 	public class TestController : ControllerBase
 	{
 		private readonly IMediator _mediator;
+		private readonly IRequestHandler<ExchangeOrderRequest<ExchangeOrderResponseSuccessEvent>> _handler;
 		private readonly ILogger<TestController> _logger;
 
-		public TestController(IMediator mediator, ILogger<TestController> logger)
+		public TestController(IMediator mediator, IRequestHandler<ExchangeOrderRequest<ExchangeOrderResponseSuccessEvent>> handler, ILogger<TestController> logger)
 		{
 			_mediator = mediator;
 			_logger = logger;
+
+			// Problematic handler is injected just fine here.
+			_handler = handler;
 		}
 
 		[HttpGet]
 		public async Task<IActionResult> Get()
 		{
-
+			
 			await _mediator.Send(new ExchangeOrderRequest<ExchangeOrderResponseSuccessEvent>()
 			{
 				Event = new ExchangeOrderResponseSuccessEvent()
